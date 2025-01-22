@@ -1,5 +1,4 @@
 <?php
-echo "Esta es la rama de Armando Vaquero Vargas";
 // 1. Iniciamos sesión
 session_start();
 
@@ -7,10 +6,6 @@ require_once 'requires/conexion.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
-
-echo "Esta es la rama de juan, profe";
-
-echo "Esta es la rama de AdriánAlumno";
 
 ?>
 
@@ -34,7 +29,7 @@ echo "Esta es la rama de AdriánAlumno";
                 <li><a href="#">Rol</a></li>
                 <li><a href="#">Deportes</a></li>
                 <li><a href="#">Responsabilidad</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -95,7 +90,7 @@ echo "Esta es la rama de AdriánAlumno";
                     </form>
                 </div>
             <?php } ?>
-
+            
         </aside>
     </main>
 </body>
