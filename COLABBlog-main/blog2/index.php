@@ -1,5 +1,5 @@
 <?php
-echo "Esta es la rama de Armando Vaquero Vargas";
+
 // 1. Iniciamos sesión
 session_start();
 
@@ -7,10 +7,6 @@ require_once 'requires/conexion.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
-
-echo "Esta es la rama de juan, profe";
-
-echo "Esta es la rama de AdriánAlumno";
 
 ?>
 
@@ -89,6 +85,16 @@ echo "Esta es la rama de AdriánAlumno";
                     </form>
                 </div>
             <?php } else { ?>
+                <div>
+                    <form method="POST" action="eliminar.php">
+                        <button type="submit" name="botonEliminar">Eliminar</button>
+                    </form>
+                </div>
+                <div>
+                    <form method="POST" action="editar.php">
+                        <button type="submit" name="botonEditar">Editar</button>
+                    </form>
+                </div>
                 <div>
                     <form method="POST" action="logout.php">
                         <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
