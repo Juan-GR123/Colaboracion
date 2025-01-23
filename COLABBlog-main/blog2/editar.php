@@ -29,7 +29,7 @@ try {
             <td>{$fila['descripcion']}</td>
             <td>{$fila['fecha']}</td>
             <td>
-                  <form method='GET' action='editarConfirmar.php'>
+                  <form method='POST' action='editarConfirmar.php'>
                         <input type='hidden' name='id' value='{$fila['id']}'>
                         <button type='submit'>Editar</button>
                     </form>
