@@ -90,6 +90,12 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                     </form>
                 </div>
             <?php } ?>
+
+            <?php 
+             if (isset($_SESSION['success_message2'])){
+                echo $_SESSION['success_message2'];
+             }
+            ?>
             
         </aside>
     </main>
