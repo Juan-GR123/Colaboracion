@@ -1,16 +1,11 @@
 <?php
-echo "Esta es la rama de Armando Vaquero Vargas";
+
 // 1. Iniciamos sesión
 session_start();
 
 require_once 'requires/conexion.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
-
-
-echo "Esta es la rama de juan, profe";
-
-echo "Esta es la rama de AdriánAlumno";
 
 ?>
 
@@ -57,7 +52,9 @@ echo "Esta es la rama de AdriánAlumno";
                 <h3>Título de mi entrada</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
             </article>
-            <button>Ver todas las entradas</button>
+            <form method="POST" action="listarTEntradas.php" >
+                <button>Ver todas las entradas</button>
+            </form>
         </section>
         <aside>
             <div class="search">
