@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Título:</label><br>
                 <input type='text' name='titulo' value='{$entrada['titulo']}'><br>
                 <label>Descripción:</label><br>
-                <textarea name='descripcion'>{$entrada['descripcion']}</textarea><br>
+                <textarea name='descripcion' rows='10' cols='60'>{$entrada['descripcion']}</textarea><br>
                 <button type='submit'>Guardar Cambios</button>
               </form>";
         echo "</div>";
