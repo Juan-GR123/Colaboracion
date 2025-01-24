@@ -20,6 +20,21 @@ try {
         echo "<link rel='stylesheet' href='assets/css/estilo.css'>";
         echo "</head>";
         echo "<body>";
+        echo "<header>";
+        ?>
+        <h1>Blog de Videojuegos</h1>
+        <nav id="menu">
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="#">Acción</a></li>
+                <li><a href="#">Rol</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Responsabilidad</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <?php
     echo "<h1>Lista de Entradas</h1>";
     echo "<table border='1'>
             <tr>

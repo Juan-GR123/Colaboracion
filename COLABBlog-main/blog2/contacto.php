@@ -70,7 +70,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botonContacto'])) {
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/estilo.css">
 </head>
-
+<header>
+<h1>Blog de Videojuegos</h1>
+        <nav id="menu">
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="#">Acción</a></li>
+                <li><a href="#">Rol</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Responsabilidad</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
+            </ul>
+        </nav>
+</header>
 <body>
     <aside>
         <div class="contacto">
@@ -82,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botonContacto'])) {
                 <span><?php echo isset($_SESSION['errorAsunto']) ? $_SESSION['errorAsunto'] : ''; ?></span>
                 <textarea name="MensajeContacto" placeholder="Mensaje" cols="50" rows="10"><?php echo isset($mensaje) ? $mensaje : ''; ?></textarea>
                 <span><?php echo isset($_SESSION['errorMensaje']) ? $_SESSION['errorMensaje'] : ''; ?></span>
-                <button type="submit" name="botonContacto">Enviar</button>
+                <button type="submit" name="botonContacto" class="botonContacto">Enviar</button>
             </form>
         </div>
     </aside>
