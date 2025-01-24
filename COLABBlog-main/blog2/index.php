@@ -41,7 +41,7 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
             $entradas = conseguirUltimasEntradas($pdo, 5);
             if(!empty($entradas)):
                 foreach($entradas as $entrada):
-                    
+
         ?>
             <article class="entrada">
                 <a href="entrada.php?id=<?= $entrada['id'] ?>">
@@ -58,7 +58,9 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
     <?php
     endif;
     ?>
-    <button>Ver todas las entradas</button>
+     <form action="listarTEntradas.php" method="POST">
+            <button type="submit" name="botonEntradas">Ver todas las entradas</button>
+    </form>
 </section>
         </section>
         <aside>
