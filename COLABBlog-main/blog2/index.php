@@ -1,78 +1,16 @@
 <?php
-echo "Esta es la rama de Armando Vaquero Vargas";
+
 // 1. Iniciamos sesión
 session_start();
 
 require_once 'requires/conexion.php';
-require_once 'requires/funciones.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
-
-
-echo "Esta es la rama de juan, profe";
-echo "Esta es la rama de AdriánAlumno";
-echo "Esta es la rama de Alonso? o no?";
-
-// Si se ha presionado crear categoría con un texto, agregarla a la BD:
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    if(isset($_POST["crearCategoria"]) && !empty($_POST["nuevaCategoria"])){
-
-        $categoria = $_POST["nuevaCategoria"];
-        crearCategoria($pdo, $categoria);
-
-    }
-
-}
-
-// Validación del "Recuérdame"
-
-// Validar si el formulario fue enviado
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $email = $_POST['emailLogin'] ?? '';
-    $password = $_POST['passwordLogin'] ?? '';
-    $recuerdame = isset($_POST['checkboxLogin']);
-
-    // Validar credenciales
-    if (validarUsuario($pdo, $email, $password)) {
-
-        $_SESSION['loginExito'] = true;
-        $_SESSION['usuario'] = $email;
-
-        // Si el usuario seleccionó "Recuérdame", guardar cookies
-
-        if ($recuerdame) {
-
-            setcookie('emailLogin', $email, time() + (86400 * 30), "/"); // 30 días
-            setcookie('passwordLogin', $password, time() + (86400 * 30), "/");
-
-        } else {
-
-            // Eliminar cookies si no está marcado
-            setcookie('emailLogin', '', time() - 3600, "/");
-            setcookie('passwordLogin', '', time() - 3600, "/");
-
-        }
-
-        header('Location: index.php');
-
-    } else {
-
-        $_SESSION['errorPassLogin'] = 'Credenciales incorrectas';
-        header('Location: index.php');
-
-    }
-
-}
-?>
 
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,19 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1>Blog de Videojuegos</h1>
         <nav id="menu">
             <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <?php
-                    $categorias = conseguirCategorias($pdo);
-                    if(!empty($categorias)):
-                        foreach($categorias as $categoria):
-                ?>
-                            <li>
-                                <a href="categoria.php?id=<?=$categoria['id']?>"><?=$categoria['nombre']?></a>
-                            </li>
-                <?php
-                        endforeach;
-                    endif;
-                ?>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Acción</a></li>
+                <li><a href="#">Rol</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Responsabilidad</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -120,7 +51,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Título de mi entrada</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
             </article>
-            <button>Ver todas las entradas</button>
+            <h2>Últimas entradas</h2>
+        <?php
+            $entradas = conseguirUltimasEntradas($pdo, 5);
+            if(!empty($entradas)):
+                foreach($entradas as $entrada):
+        ?>
+            <article class="entrada">
+                <a href="entrada.php?id=<?= $entrada['id'] ?>">
+                    <h2><?= $entrada['titulo'] ?></h2>
+                    <span class="fecha"><?= $entrada['categoria_nombre'] . ' | ' . $entrada['fecha'] ?></span>
+                    <p><?= substr($entrada['descripcion'], 0, 180) . "..." ?></p>
+                </a>
+            </article>
+    <?php
+        endforeach;
+    else:
+    ?>
+        <p>No hay entradas disponibles.</p>
+    <?php
+    endif;
+    ?>
+    <button>Ver todas las entradas</button>
+</section>
         </section>
         <aside>
             <div class="search">
@@ -155,23 +108,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <button type="submit" name="botonRegistro">Registrar</button>
                     </form>
                 </div>
+                
             <?php } else { ?>
                 <div>
-                    <form method="POST" action="index.php">
-                        <input type="text" name="nuevaCategoria" placeholder="Inserta una nueva categoría...">
-                        <button type="submit" name="crearCategoria" value="Crear Categoría">
-                            Crear Categoría
-                        </button>
-                    </form>
                     <form method="POST" action="logout.php">
                         <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
                     </form>
+                    
                 </div>
             <?php } ?>
 
+            <?php 
+             if (isset($_SESSION['success_message2'])){
+                echo $_SESSION['success_message2'];
+             }
+            ?>
+            
         </aside>
     </main>
 </body>
 
 </html>
-<?php echo "Esta es la rama de Sara"; ?>
