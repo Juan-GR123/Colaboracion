@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botonContacto'])) {
    
        $_SESSION['success_message2'] = "Registro realizado con éxito";
        header("Location: index.php");
+       exit();
     }else{
       
     if (!$email) {
