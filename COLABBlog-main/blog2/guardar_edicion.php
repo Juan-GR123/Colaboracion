@@ -9,8 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = $_POST['descripcion'];
 
     $sql = "UPDATE entradas SET titulo = :titulo, descripcion = :descripcion WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['titulo' => $titulo, 'descripcion' => $descripcion, 'id' => $id]);
+    $stmt = $pdo-> prepare($sql);
+    $stmt -> bindParam(':titulo',$titulo);
+    $stmt -> bindParam(':descripcion', $descripcion);
+    $stmt -> bindParam(':id', $id);
+    $stmt->execute();
 
     echo "Entrada actualizada correctamente.";
     echo "<a href='index.php'>Volver a la lista</a>";
