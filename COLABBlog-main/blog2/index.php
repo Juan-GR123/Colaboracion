@@ -34,26 +34,30 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
     </header>
     <main>
         <section class="content">
-            <h2>Últimas entradas</h2>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
+            
+        <h2>Últimas entradas</h2>
+        <?php
+            $entradas = conseguirUltimasEntradas($pdo, 5);
+            if(!empty($entradas)):
+                foreach($entradas as $entrada):
+        ?>
+            <article class="entrada">
+                <a href="entrada.php?id=<?= $entrada['id'] ?>">
+                    <h2><?= $entrada['titulo'] ?></h2>
+                    <span class="fecha"><?= $entrada['categoria_nombre'] . ' | ' . $entrada['fecha'] ?></span>
+                    <p><?= substr($entrada['descripcion'], 0, 180) . "..." ?></p>
+                </a>
             </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <form action="listarTEntradas.php" method="POST">
-            <button type="submit" name="botonEntradas">Ver todas las entradas</button>
-            </form>
+    <?php
+        endforeach;
+    else:
+    ?>
+        <p>No hay entradas disponibles.</p>
+    <?php
+    endif;
+    ?>
+    <button>Ver todas las entradas</button>
+</section>
         </section>
         <aside>
             <div class="search">
@@ -91,14 +95,17 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                 
             <?php } else { ?>
                 <div>
-                    <form method="POST" action="logout.php">
-                        <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
+                    <form method="POST" action="crearEntradas.php">
+                        <button type="submit" name="botonCrear">Crear Entrada</button>
                     </form>
                     <form method="POST" action="eliminar.php">
                         <button type="submit" name="botonEliminar">Eliminar</button>
                     </form>
                     <form action="editar.php" method="POST">
                         <button type="submit" name="botonEditar">Editar</button>
+                    </form>
+                    <form method="POST" action="logout.php">
+                        <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
                     </form>
                 </div>
             <?php } ?>
