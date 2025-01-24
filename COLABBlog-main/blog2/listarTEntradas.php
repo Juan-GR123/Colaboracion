@@ -13,7 +13,13 @@ try {
     // Preparar y ejecutar la consulta
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-
+    echo "<head>";
+        echo "<meta charset='UTF-8'>";
+        echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+        echo "<title>Editar</title>";
+        echo "<link rel='stylesheet' href='assets/css/estilo.css'>";
+        echo "</head>";
+        echo "<body>";
     echo "<h1>Lista de Entradas</h1>";
     echo "<table border='1'>
             <tr>
@@ -36,6 +42,7 @@ try {
               </tr>";
     }
     echo "</table>";
+    echo "</body>";
 } catch (PDOException $e) {
     // Manejo de errores
     echo "Error en la conexión: " . $e->getMessage();

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<title>Editar</title>";
         echo "<link rel='stylesheet' href='assets/css/estilo.css'>";
         echo "</head>";
-        echo "<body>";
+        echo "<body>"; 
         echo "<h1>Editar Entrada</h1>";
         echo "<aside>";
         echo "<div>";
