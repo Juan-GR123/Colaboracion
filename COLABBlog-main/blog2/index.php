@@ -36,23 +36,6 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
     <main>
         <section class="content">
             <h2>Últimas entradas</h2>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <h2>Últimas entradas</h2>
         <?php
             $entradas = conseguirUltimasEntradas($pdo, 5);
             if(!empty($entradas)):
@@ -108,6 +91,9 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                 
             <?php } else { ?>
                 <div>
+                    <form method="POST" action="crearEntradas.php">
+                        <button type="submit" name="botonCrear">Crear Entrada</button>
+                    </form>
                     <form method="POST" action="eliminar.php">
                         <button type="submit" name="botonEliminar">Eliminar</button>
                     </form>
