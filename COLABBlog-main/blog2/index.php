@@ -4,6 +4,7 @@
 session_start();
 
 require_once 'requires/conexion.php';
+require_once 'funciones.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
