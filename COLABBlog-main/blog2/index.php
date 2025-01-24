@@ -4,7 +4,6 @@
 session_start();
 
 require_once 'requires/conexion.php';
-require_once 'funciones.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
@@ -22,14 +21,14 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 <body>
     <header>
         <h1>Blog de Videojuegos</h1>
-        <nav>
+        <nav id="menu">
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Acción</a></li>
                 <li><a href="#">Rol</a></li>
                 <li><a href="#">Deportes</a></li>
                 <li><a href="#">Responsabilidad</a></li>
-                <li><a href="contacto.php">Contacto</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -68,8 +67,12 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                     <?php if (isset($_SESSION['errorPassLogin']))
                         echo $_SESSION['errorPassLogin']; ?>
                     <form method="POST" action="login.php">
-                        <input type="email" name="emailLogin" placeholder="Email">
-                        <input type="password" name="passwordLogin" placeholder="Contraseña">
+                        <input type="email" name="emailLogin" placeholder="Email" value="<?= $_COOKIE['emailLogin'] ?? '' ?>">
+                        <input type="password" name="passwordLogin" placeholder="Contraseña" value="<?= $_COOKIE['passwordLogin'] ?? '' ?>">
+                        <p style="display: flex;">
+                            <input type="checkbox" id="checkboxLogin" name="checkboxLogin" value="<?= $_COOKIE['passwordLogin'] ?? '' ?>">
+                            <label for="checkboxLogin">Recuérdame</label>
+                        </p>
                         <button type="submit" name="botonLogin">Entrar</button>
                     </form>
                 </div>
@@ -88,14 +91,6 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                 
             <?php } else { ?>
                 <div>
-                    <form method="POST" action="eliminar.php">
-                        <button type="submit" name="botonEliminar">Eliminar</button>
-                    </form>
-                
-                    <form method="POST" action="editar.php">
-                        <button type="submit" name="botonEditar">Editar</button>
-                    </form>
-              
                     <form method="POST" action="logout.php">
                         <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
                     </form>
