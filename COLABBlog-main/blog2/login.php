@@ -8,6 +8,7 @@ require_once 'requires/conexion.php';
 $_SESSION['errorInicioSesion'] = $_SESSION['errorInicioSesion'] ?? 0;
 $_SESSION['ultimoIntento'] = $_SESSION['ultimoIntento'] ?? time();
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
+$_SESSION['id_usuario_logueado'] = $_SESSION['id_usuario_logueado']  ?? 0;
 
 // 6. Formulario de Inicio de Sesión
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botonLogin']) && $_SESSION['errorInicioSesion'] < 3) {
@@ -23,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botonLogin']) && $_SES
 
         if ($stmt->rowCount() == 1) {
             $user = $stmt->fetch();
+            $_SESSION['id_usuario_logueado']= $user['id'];
             if (password_verify($password, $user['password'])) {
                 $_SESSION['errorInicioSesion'] = 0;
                 $_SESSION['loginExito'] = true;
