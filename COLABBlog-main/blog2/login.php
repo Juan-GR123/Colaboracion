@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botonLogin']) && $_SES
                 $_SESSION['loginExito'] = true;
             } else {
                 $_SESSION['errorPassLogin'] = "La contraseña no es correcta.";
-                    $_SESSION['errorInicioSesion']++;
+                $_SESSION['errorInicioSesion']++;
                 $_SESSION['ultimoIntento'] = time(); // Guardo la hora del ultimo intento fallido
             }
         } else {
