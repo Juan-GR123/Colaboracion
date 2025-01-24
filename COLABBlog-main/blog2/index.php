@@ -4,6 +4,7 @@ echo "Esta es la rama de Armando Vaquero Vargas";
 session_start();
 
 require_once 'requires/conexion.php';
+require_once 'funciones.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
@@ -57,7 +58,29 @@ echo "Esta es la rama de AdriánAlumno";
                 <h3>Título de mi entrada</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
             </article>
-            <button>Ver todas las entradas</button>
+            <h2>Últimas entradas</h2>
+        <?php
+            $entradas = conseguirUltimasEntradas($pdo, 5);
+            if(!empty($entradas)):
+                foreach($entradas as $entrada):
+        ?>
+            <article class="entrada">
+                <a href="entrada.php?id=<?= $entrada['id'] ?>">
+                    <h2><?= $entrada['titulo'] ?></h2>
+                    <span class="fecha"><?= $entrada['categoria_nombre'] . ' | ' . $entrada['fecha'] ?></span>
+                    <p><?= substr($entrada['descripcion'], 0, 180) . "..." ?></p>
+                </a>
+            </article>
+    <?php
+        endforeach;
+    else:
+    ?>
+        <p>No hay entradas disponibles.</p>
+    <?php
+    endif;
+    ?>
+    <button>Ver todas las entradas</button>
+</section>
         </section>
         <aside>
             <div class="search">
@@ -88,11 +111,13 @@ echo "Esta es la rama de AdriánAlumno";
                         <button type="submit" name="botonRegistro">Registrar</button>
                     </form>
                 </div>
+                
             <?php } else { ?>
                 <div>
                     <form method="POST" action="logout.php">
                         <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
                     </form>
+                    
                 </div>
             <?php } ?>
 
