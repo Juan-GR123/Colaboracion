@@ -40,6 +40,7 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
             $entradas = conseguirUltimasEntradas($pdo, 5);
             if(!empty($entradas)):
                 foreach($entradas as $entrada):
+                    
         ?>
             <article class="entrada">
                 <a href="entrada.php?id=<?= $entrada['id'] ?>">
