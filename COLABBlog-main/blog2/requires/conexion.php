@@ -1,6 +1,6 @@
 <?php
 // Configuración de la conexión con PDO
-    $dsn = "mysql:host=25.17.84.171;dbname=blog;charset=utf8mb4";
+    $dsn = "mysql:host=localhost;dbname=blog;charset=utf8mb4";
     //si no tienes la base de datos pon aqui localhost
     $username = "root";
     $password = "";

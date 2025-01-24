@@ -52,8 +52,9 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                 <h3>Título de mi entrada</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
             </article>
-            <button>Ver todas las entradas</button>
-            
+            <form action="listarTEntradas.php" method="POST">
+            <button type="submit" name="botonEntradas">Ver todas las entradas</button>
+            </form>
         </section>
         <aside>
             <div class="search">
