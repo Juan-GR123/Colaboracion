@@ -23,7 +23,7 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
         <h1>Blog de Videojuegos</h1>
         <nav id="menu">
             <ul>
-                <li><a href="#">Inicio</a></li>
+                <li><a href="index.php">Inicio</a></li>
                 <li><a href="#">Acción</a></li>
                 <li><a href="#">Rol</a></li>
                 <li><a href="#">Deportes</a></li>
