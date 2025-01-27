@@ -75,7 +75,6 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
                     <?php }?>
 
-                         
                         <form method="POST" action="login.php">
                             <input type="email" name="emailLogin" placeholder="Email">
                                 <span style="color: red;">
@@ -99,7 +98,6 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                         </form>
                 </div>
                 
-
                 <div class="register">
                     <h3>Registrate</h3>
                     <?php if (isset($_SESSION['success_message']))

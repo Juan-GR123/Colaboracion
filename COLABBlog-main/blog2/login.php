@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
         $emailErr = "<br><i>El correo es obligatorio.";
         $_SESSION['errorEmail'] = $emailErr;
-        unset($_SESSION['errorEmail']);
+        
     } else {
        
         $email = test_input($_POST["email"]);
@@ -22,15 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $emailErr = "<br><i>El formato del correo es inválido.";
             $_SESSION['errorEmail'] = $emailErr;
         }
+        
     }
     //2.validacion de la contraseña
     if (empty($_POST["contra"])) {
         $contraErr = "<br><i>La contraseña es obligatoria.";
         $_SESSION['errorContra'] = $contraErr;
+        
        
     } else {
         $contra = test_input($_POST["contra"]);
-        unset($_SESSION['errorContra']);
     }
 }
 /////////////////////////////////////////////////////////
