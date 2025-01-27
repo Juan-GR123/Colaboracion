@@ -44,7 +44,7 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
         ?>
             <article class="entrada">
-                <a href="entrada.php?id=<?= $entrada['id'] ?>">
+                <a href="detallesEntrada.php?id=<?= $entrada['id'] ?>">
                     <h2><?= $entrada['titulo'] ?></h2>
                     <span class="fecha"><?= $entrada['categoria_nombre'] . ' | ' . $entrada['fecha'] ?></span>
                     <p><?= substr($entrada['descripcion'], 0, 180) . "..." ?></p>
