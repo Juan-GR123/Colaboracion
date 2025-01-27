@@ -53,6 +53,7 @@ main {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: black;
 }
 
 .content h2 {
@@ -61,6 +62,23 @@ main {
 
 .content article {
     margin-bottom: 20px;
+}
+
+.content article a{
+    color: black;
+    text-decoration: none;
+}
+
+.content article a:hover{
+    color: #003366;
+}
+
+.content .fecha{
+    color: black;
+}
+
+.content p{
+    color: black;
 }
 
 .content button {
