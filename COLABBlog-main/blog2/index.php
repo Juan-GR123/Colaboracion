@@ -54,7 +54,6 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
         endforeach;
     else:
     ?>
-    
         <p>No hay entradas disponibles.</p>
     <?php
     endif;
