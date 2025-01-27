@@ -87,11 +87,11 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                     <h3>Identificate</h3>
                     <?php if (isset($_SESSION['errorPassLogin']))
                         echo $_SESSION['errorPassLogin']; ?>
-                    <form method="POST" action="login.php">
-                        <input type="email" name="emailLogin" placeholder="Email">
-                        <input type="password" name="passwordLogin" placeholder="Contraseña">
-                        <button type="submit" name="botonLogin">Entrar</button>
-                    </form>
+                        <form method="POST" action="login.php">
+                            <input type="email" name="emailLogin" placeholder="Email">
+                            <input type="password" name="passwordLogin" placeholder="Contraseña">
+                            <button type="submit" name="botonLogin">Entrar</button>
+                        </form>
                 </div>
                 <div class="register">
                     <h3>Registrate</h3>
