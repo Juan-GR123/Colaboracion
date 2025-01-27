@@ -69,7 +69,7 @@ if (isset($_GET['categoria_id'])) {
         <nav id="menu">
             <ul>
                 <li><a href="index.php">Inicio</a></li>
-                <li><a href="categoria.php?categoria_id=2">Acción</a></li>
+                <li><a href="categoria.php?categoria_id=7">Acción</a></li>
                 <li><a href="categoria.php?categoria_id=3">Rol</a></li>
                 <li><a href="categoria.php?categoria_id=4">Deportes</a></li>
                 <li><a href="categoria.php?categoria_id=6">Responsabilidad</a></li>
