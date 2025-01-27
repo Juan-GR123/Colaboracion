@@ -2,9 +2,16 @@
 session_start();
 
 require_once 'requires/conexion.php';
+require_once 'requires/funciones.php';
 
-
+$dsn = "mysql:host=localhost;dbname=blog;charset=utf8mb4";
+$username = 'root';
+$password = '';
 try{
+    $conexion = new PDO($dsn, $username, $password);
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $categorias = conseguirCategorias($conexion);
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : false;
         $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
@@ -36,9 +43,23 @@ try{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Entradas</title>
+    <title>Blog de Videojuegos</title>
+    <link rel="stylesheet" href="assets/css/estilo.css">
 </head>
 <body>
+<header>
+        <h1>Blog de Videojuegos</h1>
+        <nav id="menu">
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="#">Acción</a></li>
+                <li><a href="#">Rol</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Responsabilidad</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
     <h2>CREAR NUEVA ENTRADA</h2>
     <form method="POST" action="crearEntradas.php">
         <label for="titulo">Título</label>
@@ -51,13 +72,13 @@ try{
         <br>
         <label for="categoria">Categoría</label>
         <select name="categoria" id="categoria">
-            <?php foreach ($categorias as $categoria): ?>
-                <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre'] ?></option>
-            <?php endforeach; ?>
-            <!-- <option value="1">Accion</option>
-            <option value="2">Rol</option>
-            <option value="3">Deportes</option>
-            <option value="4">Responsabilidad</option> -->
+            <?php if (!empty($categorias)): ?>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre'] ?></option>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <option value="">No hay categorías disponibles</option>
+            <?php endif; ?>
         </select>
         <br>
         <br>
