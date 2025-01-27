@@ -22,41 +22,26 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 <body>
     <header>
         <h1>Blog de Videojuegos</h1>
-        <nav>
+        <nav id="menu">
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Acción</a></li>
-                <li><a href="#">Rol</a></li>
-                <li><a href="#">Deportes</a></li>
-                <li><a href="#">Responsabilidad</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="categoria.php?categoria_id=1">Acción</a></li>
+                <li><a href="categoria.php?categoria_id=2">Rol</a></li>
+                <li><a href="categoria.php?categoria_id=3">Deportes</a></li>
+                <li><a href="categoria.php?categoria_id=4">Responsabilidad</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="content">
-            <h2>Últimas entradas</h2>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <article>
-                <h3>Título de mi entrada</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat est sit amet sapien sodales, ac lacinia est vehicula. Sed luctus sit amet mi vitae lobortis.</p>
-            </article>
-            <h2>Últimas entradas</h2>
+            
+        <h2>Últimas entradas</h2>
         <?php
             $entradas = conseguirUltimasEntradas($pdo, 5);
             if(!empty($entradas)):
                 foreach($entradas as $entrada):
+
         ?>
             <article class="entrada">
                 <a href="entrada.php?id=<?= $entrada['id'] ?>">
@@ -73,7 +58,9 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
     <?php
     endif;
     ?>
-    <button>Ver todas las entradas</button>
+     <form action="listarTEntradas.php" method="POST">
+            <button type="submit" name="botonEntradas">Ver todas las entradas</button>
+    </form>
 </section>
         </section>
         <aside>
@@ -87,11 +74,15 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                     <h3>Identificate</h3>
                     <?php if (isset($_SESSION['errorPassLogin']))
                         echo $_SESSION['errorPassLogin']; ?>
-                        <form method="POST" action="login.php">
-                            <input type="email" name="emailLogin" placeholder="Email">
-                            <input type="password" name="passwordLogin" placeholder="Contraseña">
-                            <button type="submit" name="botonLogin">Entrar</button>
-                        </form>
+                    <form method="POST" action="login.php">
+                        <input type="email" name="emailLogin" placeholder="Email" value="<?= $_COOKIE['emailLogin'] ?? '' ?>">
+                        <input type="password" name="passwordLogin" placeholder="Contraseña" value="<?= $_COOKIE['passwordLogin'] ?? '' ?>">
+                        <p style="display: flex;">
+                            <input type="checkbox" id="checkboxLogin" name="checkboxLogin" value="<?= $_COOKIE['passwordLogin'] ?? '' ?>">
+                            <label for="checkboxLogin">Recuérdame</label>
+                        </p>
+                        <button type="submit" name="botonLogin">Entrar</button>
+                    </form>
                 </div>
                 <div class="register">
                     <h3>Registrate</h3>
@@ -108,21 +99,27 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                 
             <?php } else { ?>
                 <div>
+                    <form method="POST" action="crearEntradas.php">
+                        <button type="submit" name="botonCrear">Crear Entrada</button>
+                    </form>
                     <form method="POST" action="eliminar.php">
                         <button type="submit" name="botonEliminar">Eliminar</button>
                     </form>
-                
-                    <form method="POST" action="editar.php">
+                    <form action="editar.php" method="POST">
                         <button type="submit" name="botonEditar">Editar</button>
                     </form>
-              
                     <form method="POST" action="logout.php">
                         <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
                     </form>
-                    
                 </div>
             <?php } ?>
 
+            <?php 
+             if (isset($_SESSION['success_message2'])){
+                echo $_SESSION['success_message2'];
+             }
+            ?>
+            
         </aside>
     </main>
 </body>
