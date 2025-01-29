@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idUsuario'])) {
         <button type="submit">Seleccionar</button>
     </form>
 
+    
     <?php if (isset($idUsuario)): ?>
         <h1>Actualizar Usuario</h1>
         <form method="post" action="actualizarUsu.php">
