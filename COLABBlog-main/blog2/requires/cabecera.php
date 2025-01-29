@@ -8,6 +8,7 @@
             <li><a href="categoria.php?categoria_id=3">Deportes</a></li>
             <li><a href="categoria.php?categoria_id=4">Responsabilidad</a></li>
             <li><a href="contacto.php">Contacto</a></li>
+            <li><a href="actualizarUsu.php">Actualizar datos usuario</a></li>
         </ul>
     </nav>
 </header>
