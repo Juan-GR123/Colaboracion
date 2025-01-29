@@ -11,13 +11,13 @@ $contraErr = $emailErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 1. Validación del correo electrónico
-    if (empty($_POST["email"])) {
+    if (empty($_POST["emailLogin"])) {
         $emailErr = "<br><i>El correo es obligatorio.";
         $_SESSION['errorEmail'] = $emailErr;
         
     } else {
        
-        $email = test_input($_POST["email"]);
+        $email = test_input($_POST["emailLogin"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr = "<br><i>El formato del correo es inválido.";
             $_SESSION['errorEmail'] = $emailErr;
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     }
     //2.validacion de la contraseña
-    if (empty($_POST["contra"])) {
+    if (empty($_POST["passwordLogin"])) {
         $contraErr = "<br><i>La contraseña es obligatoria.";
         $_SESSION['errorContra'] = $contraErr;
         
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contra = test_input($_POST["contra"]);
     }
 }
-/////////////////////////////////////////////////////////
+
 
 // 7. Definimos una variable de sesión para controlar los 3 intentos fallidos de inicio de sesión
 $_SESSION['errorInicioSesion'] = $_SESSION['errorInicioSesion'] ?? 0;
@@ -90,8 +90,6 @@ if ($_SESSION['errorInicioSesion'] >= 3) {
         $_SESSION['errorInicioSesion'] = 0;
     }
 }
-
-
 
 // 2. Función para limpiar y validar los datos
 function test_input($data){

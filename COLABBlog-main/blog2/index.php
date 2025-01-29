@@ -1,5 +1,4 @@
 <?php
-echo "Esta es la rama de Armando Vaquero Vargas";
 // 1. Iniciamos sesión
 session_start();
 
@@ -30,6 +29,7 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                 <li><a href="#">Deportes</a></li>
                 <li><a href="#">Responsabilidad</a></li>
                 <li><a href="#">Contacto</a></li>
+                <li><a href="actualizarUsu.php">Actualizar datos usuario</a></li>
             </ul>
         </nav>
     </header>
@@ -73,30 +73,30 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                             
                         </span>
 
-                    <?php }?>
+                    <?php } ?>
 
                         <form method="POST" action="login.php">
                             <input type="email" name="emailLogin" placeholder="Email">
-                                <span style="color: red;">
-                                    <?php
-                                    if (isset($_SESSION['errorEmail'])) {
-                                        echo $_SESSION['errorEmail'];
-                                        unset($_SESSION['errorEmail']); // Eliminar error tras mostrarlo
-                                    }
-                                    ?>
-                                </span>
+                            <span style="color: red;">
+                                <?php
+                                if (isset($_SESSION['errorEmail']) && !empty($_SESSION['errorEmail'])) {
+                                    echo $_SESSION['errorEmail'];
+                                    unset($_SESSION['errorEmail']); // Eliminar error tras mostrarlo
+                                }
+                                ?>
+                            </span>
                             <input type="password" name="passwordLogin" placeholder="Contraseña">
-                                <span style="color: red;">
-                                    <?php
-                                    if (isset($_SESSION['errorContra'])) {
-                                        echo $_SESSION['errorContra'];
-                                        unset($_SESSION['errorContra']); // Eliminar error tras mostrarlo
-                                    }
-                                    ?>
-                                </span>
+                            <span style="color: red;">
+                                <?php
+                                if (isset($_SESSION['errorContra']) && !empty($_SESSION['errorContra'])) {
+                                    echo $_SESSION['errorContra'];
+                                    unset($_SESSION['errorContra']); // Eliminar error tras mostrarlo
+                                }
+                                ?>
+                            </span>
                             <button type="submit" name="botonLogin">Entrar</button>
                         </form>
-                </div>
+                        </div>
                 
                 <div class="register">
                     <h3>Registrate</h3>
