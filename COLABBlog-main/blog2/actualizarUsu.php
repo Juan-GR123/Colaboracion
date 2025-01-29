@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idUsuario'])) {
     $apellidos = $_POST['apellidos'];
     $email = $_POST['email'];
 
-    // Validar los datos (puedes agregar más validaciones según tus necesidades)
+    // Validar los datos 
     if (empty($nombre) || empty($apellidos) || empty($email)) {
         $error = "Todos los campos son obligatorios.";
     } else {
