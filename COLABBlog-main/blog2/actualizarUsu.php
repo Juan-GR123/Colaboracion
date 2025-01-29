@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idUsuario'])) {
         }
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectUsuario'])) {
-    $query = $db->prepare("SELECT nombre, apellidos, email FROM usuarios WHERE id = ?");
+    $query = $db->prepare("SELECT * FROM usuarios WHERE id = ?");
     $idUsuario = $_POST['selectUsuario'];
     $query->execute([$idUsuario]);
     $result = $query->fetch(PDO::FETCH_ASSOC);
