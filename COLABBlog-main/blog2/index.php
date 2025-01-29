@@ -20,19 +20,11 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 </head>
 
 <body>
-    <header>
-        <h1>Blog de Videojuegos</h1>
-        <nav id="menu">
-            <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="categoria.php?categoria_id=1">Acción</a></li>
-                <li><a href="categoria.php?categoria_id=2">Rol</a></li>
-                <li><a href="categoria.php?categoria_id=3">Deportes</a></li>
-                <li><a href="categoria.php?categoria_id=4">Responsabilidad</a></li>
-                <li><a href="contacto.php">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    
+    <?php
+        require_once 'requires/cabecera.php';
+    ?>
+
     <main>
         <section class="content">
             
@@ -63,65 +55,17 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
     </form>
 </section>
         </section>
-        <aside>
-            <div class="search">
-                <h3>Buscar</h3>
-                <input type="text" placeholder="Buscar...">
-                <button>Buscar</button>
-            </div>
-            <?php if (!$_SESSION['loginExito']) { ?>
-                <div class="login">
-                    <h3>Identificate</h3>
-                    <?php if (isset($_SESSION['errorPassLogin']))
-                        echo $_SESSION['errorPassLogin']; ?>
-                    <form method="POST" action="login.php">
-                        <input type="email" name="emailLogin" placeholder="Email" value="<?= $_COOKIE['emailLogin'] ?? '' ?>">
-                        <input type="password" name="passwordLogin" placeholder="Contraseña" value="<?= $_COOKIE['passwordLogin'] ?? '' ?>">
-                        <p style="display: flex;">
-                            <input type="checkbox" id="checkboxLogin" name="checkboxLogin" value="<?= $_COOKIE['passwordLogin'] ?? '' ?>">
-                            <label for="checkboxLogin">Recuérdame</label>
-                        </p>
-                        <button type="submit" name="botonLogin">Entrar</button>
-                    </form>
-                </div>
-                <div class="register">
-                    <h3>Registrate</h3>
-                    <?php if (isset($_SESSION['success_message']))
-                        echo $_SESSION['success_message']; ?>
-                    <form method="POST" action="registro.php">
-                        <input type="text" name="nombreRegistro" placeholder="Nombre">
-                        <input type="text" name="apellidosRegistro" placeholder="Apellidos">
-                        <input type="email" name="emailRegistro" placeholder="Email">
-                        <input type="password" name="passwordRegistro" placeholder="Contraseña">
-                        <button type="submit" name="botonRegistro">Registrar</button>
-                    </form>
-                </div>
-                
-            <?php } else { ?>
-                <div>
-                    <form method="POST" action="crearEntradas.php">
-                        <button type="submit" name="botonCrear">Crear Entrada</button>
-                    </form>
-                    <form method="POST" action="eliminar.php">
-                        <button type="submit" name="botonEliminar">Eliminar</button>
-                    </form>
-                    <form action="editar.php" method="POST">
-                        <button type="submit" name="botonEditar">Editar</button>
-                    </form>
-                    <form method="POST" action="logout.php">
-                        <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
-                    </form>
-                </div>
-            <?php } ?>
+        
+        <?php
+            require_once 'requires/lateral.php';
+        ?>
 
-            <?php 
-             if (isset($_SESSION['success_message2'])){
-                echo $_SESSION['success_message2'];
-             }
-            ?>
-            
-        </aside>
     </main>
+
+    <?php
+        require_once 'requires/pie.php';
+    ?>
+    
 </body>
 
 </html>
