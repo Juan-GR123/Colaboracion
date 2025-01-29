@@ -19,7 +19,7 @@ try {
             <th>Fecha</th>
             <th>Opciones</th>
         </tr>";
-    while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) { //te da todas las filas de la base de datos una a una
         if($fila['usuario_id']==$_SESSION['id_usuario_logueado']){
             echo "<tr>
             <td>{$fila['id']}</td>
