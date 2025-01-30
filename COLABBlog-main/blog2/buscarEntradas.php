@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'requires/conexion.php';
 function buscarEntradas($pdo, $query) {
     $sql = "SELECT e.*, c.nombre AS categoria_nombre FROM entradas e 

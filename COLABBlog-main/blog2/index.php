@@ -58,15 +58,15 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
         <aside>
             <div class="search">
                 <h3>Buscar</h3>
-                <form method="GET" action="index.php"></form>
+                <form method="POST" action="index.php">
                     <input type="text" name="query" placeholder="Buscar por título...">
                     <button type="submit">Buscar</button>
                 </form>
             </div>
             <div class="search-results">
                 <?php
-                if (isset($_GET['query']) && !empty($_GET['query'])) {
-                    $query = htmlspecialchars($_GET['query']);
+                if (isset($_POST['query']) && !empty($_POST['query'])) {
+                    $query = htmlspecialchars($_POST['query']);
                     $resultados = buscarEntradas($pdo, $query);
                     if (!empty($resultados)) {
                         foreach ($resultados as $resultado) {
