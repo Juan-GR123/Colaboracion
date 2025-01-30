@@ -34,16 +34,16 @@
         
     <?php } else { ?>
         <div>
-            <form method="POST" action="crearEntradas.php">
+            <form method="POST" action="../crearEntradas.php">
                 <button type="submit" name="botonCrear">Crear Entrada</button>
             </form>
-            <form method="POST" action="eliminar.php">
+            <form method="POST" action="../eliminar.php">
                 <button type="submit" name="botonEliminar">Eliminar</button>
             </form>
-            <form action="editar.php" method="POST">
+            <form action="../editar.php" method="POST">
                 <button type="submit" name="botonEditar">Editar</button>
             </form>
-            <form method="POST" action="logout.php">
+            <form method="POST" action="../logout.php">
                 <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
             </form>
         </div>
