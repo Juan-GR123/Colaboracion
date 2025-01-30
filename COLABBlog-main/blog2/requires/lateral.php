@@ -1,5 +1,5 @@
 <aside>
-    <div class="search">
+     <div class="search">
         <h3>Buscar</h3>
         <input type="text" placeholder="Buscar...">
         <button>Buscar</button>
