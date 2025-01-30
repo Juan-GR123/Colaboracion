@@ -1,10 +1,10 @@
 <?php
-echo "Esta es la rama de Armando Vaquero Vargas";
 // 1. Iniciamos sesión
 session_start();
 
 require_once 'requires/conexion.php';
 require_once 'requires/funciones.php';
+require_once 'buscarEntradas.php';
 
 $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
 
@@ -59,8 +59,33 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
         <aside>
             <div class="search">
                 <h3>Buscar</h3>
-                <input type="text" placeholder="Buscar...">
-                <button>Buscar</button>
+                <form method="POST" action="index.php">
+                    <input type="text" name="query" placeholder="Buscar por título...">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+            <div class="search-results">
+                <?php
+                if (isset($_POST['query']) && !empty($_POST['query'])) {
+                    $query = htmlspecialchars($_POST['query']);
+                    $resultados = buscarEntradas($pdo, $query);
+                    if (!empty($resultados)) {
+                        foreach ($resultados as $resultado) {
+                            ?>
+                            <article class="entrada">
+                                <a href="detallesEntrada.php?id=<?= $resultado['id'] ?>">
+                                    <h2><?= $resultado['titulo'] ?></h2>
+                                    <span class="fecha"><?= $resultado['categoria_nombre'] . ' | ' . $resultado['fecha'] ?></span>
+                                    <p><?= substr($resultado['descripcion'], 0, 180) . "..." ?></p>
+                                </a>
+                            </article>
+                            <?php
+                        }
+                    } else {
+                        echo "<p>No se encontraron resultados para '$query'.</p>";
+                    }
+                }
+                ?>
             </div>
 
             <?php if (!$_SESSION['loginExito']) { ?>
