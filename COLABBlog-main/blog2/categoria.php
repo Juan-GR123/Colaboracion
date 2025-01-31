@@ -34,8 +34,9 @@ if (isset($_GET['categoria_id'])) {
 </head>
 <body>
     <header>
-        <h1>Blog de Videojuegos</h1>
-        <nav id="menu">
+       <!-- <h1>Blog de Videojuegos</h1>-->
+        <!--<nav id="menu">
+            <
             <ul>
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="categoria.php?categoria_id=7">Acción</a></li>
@@ -44,7 +45,10 @@ if (isset($_GET['categoria_id'])) {
                 <li><a href="categoria.php?categoria_id=6">Responsabilidad</a></li>
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
-        </nav>
+        </nav>-->
+        <?php 
+            require_once "./requires/cabecera.php";
+        ?>
     </header>
     <main>
         <section class="content">

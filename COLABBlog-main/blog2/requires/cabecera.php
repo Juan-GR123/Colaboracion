@@ -3,7 +3,7 @@
     <nav id="menu">
         <ul>
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="categoria.php?categoria_id=1">Acción</a></li>
+            <li><a href="categoria.php?categoria_id=1">Tecnolog&iacute;a</a></li>
             <li><a href="categoria.php?categoria_id=2">Rol</a></li>
             <li><a href="categoria.php?categoria_id=3">Deportes</a></li>
             <li><a href="categoria.php?categoria_id=4">Responsabilidad</a></li>

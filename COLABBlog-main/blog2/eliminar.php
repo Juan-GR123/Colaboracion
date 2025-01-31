@@ -27,7 +27,7 @@ try {
             <td>{$fila['descripcion']}</td>
             <td>{$fila['fecha']}</td>
             <td>
-                <form method='POST' action='eliminarConf.php'>
+                <form method='POST' action='eliminarConfirmacion.php'>
                     <input type='hidden' name='id' value='{$fila['id']}'>
                     <button type='submit'>Eliminar</button>
                 </form>

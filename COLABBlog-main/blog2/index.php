@@ -147,10 +147,10 @@ $_SESSION['loginExito'] = $_SESSION['loginExito'] ?? false;
                         <button type="submit" name="botonCrear">Crear Entrada</button>
                     </form>
                     <form method="POST" action="eliminar.php">
-                        <button type="submit" name="botonEliminar">Eliminar</button>
+                        <button type="submit" name="botonEliminar">Eliminar Entrada</button>
                     </form>
                     <form action="editar.php" method="POST">
-                        <button type="submit" name="botonEditar">Editar</button>
+                        <button type="submit" name="botonEditar">Editar Entrada</button>
                     </form>
                     <form method="POST" action="logout.php">
                         <button type="submit" name="botonCerrarSesion">Cerrar Sesión</button>
