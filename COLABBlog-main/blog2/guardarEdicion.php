@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt -> bindParam(':id', $id);
     $stmt->execute();
 
-    echo "Entrada actualizada correctamente.";
-    echo "<a href='index.php'>Volver a la lista</a>";
+    header('Location: index.php');
+    exit();
 } 
 
 ?>
